@@ -3,7 +3,6 @@ name: GitHub Actions Secret Example
 on:
   push:
     branches: 
-    - [ main ]
     - '/feature/lyricLogic'
 
 jobs:
