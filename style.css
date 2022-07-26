@@ -1,0 +1,22 @@
+body {
+background-color: black;
+color: whitesmoke
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: whitesmoke;
+    cursor: default;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: whitesmoke;
+    cursor: default;
+}
