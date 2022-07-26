@@ -1,7 +1,7 @@
 
 on:
   push:
-    branches: [ main ]
+    branches: [ feature/lyricLogic ]
 
 jobs:
   secrets-in-github-actions:
