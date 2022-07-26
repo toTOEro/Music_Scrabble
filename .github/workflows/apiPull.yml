@@ -1,9 +1,7 @@
-name: GitHub Actions Secret Example
 
 on:
   push:
-    branches: 
-    - '/feature/lyricLogic'
+    branches: [ main ]
 
 jobs:
   secrets-in-github-actions:
@@ -15,13 +13,13 @@ jobs:
       - name: Step 1 - Echo out a GitHub Actions Secret to the logs
         run: |
           echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.SECRET_TOKEN }}
+          echo ${{ secrets.MUSIXMATCH_API }}
           echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{secrets.SECRET_TOKEN}} | sed 's/./& /g' 
+          echo ${{secrets.MUSIXMATCH_API}} | sed 's/./& /g' 
       # Use a GitHub Actions secret variable in a bash shell
       - name: Step 2 - GitHub Action if statement (true)
         env: 
-          WHO_TO_TRUST: ${{ secrets.SECRET_TOKEN }}
+          WHO_TO_TRUST: ${{ secrets.MUSIXMATCH_API }}
         if:  env.WHO_TO_TRUST == 'TrustNo1'
         run: echo "I know what the secret token is!"
 
@@ -29,6 +27,6 @@ jobs:
       - name: Step 3 - Conditional GitHub Action (false)
         shell: bash
         env: 
-          WHO_TO_TRUST: ${{ secrets.SECRET_TOKEN }}
+          WHO_TO_TRUST: ${{ secrets.MUSIXMATCH_API }}
         if:  env.WHO_TO_TRUST != 'TrustNobody'
         run: echo "I was wrong thinking the GitHub secret was 'TrustNobody'!"
