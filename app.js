@@ -1,16 +1,11 @@
-import fetch from 'node-fetch';
+const express = require('express')
+const app = express()
+const port = 3000
 
-export default async function handler(request, response) {
-  const res = await fetch('https://dynaguys-git-feature-lyriclogic-totoero.vercel.app/', {
-    method: 'POST',
-    body: JSON.stringify({
-      client_id: process.env.spotify_API,
-      client_secret: process.env.musix_API,
-    }),
-    headers: { 'Content-Type': 'application/json' },
-  });
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-  const data = await res.json();
-  console.log(response)
-  return response.status(200).json({ data });
-}
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
