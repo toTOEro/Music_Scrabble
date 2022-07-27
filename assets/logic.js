@@ -27,7 +27,7 @@ function musixApiCall(url) {
             music = data.message.body.track_list;
             for (let i = 0; i < music.length; i++) {
                 var song = music[i].track;
-                var spotifyUrl = `https://api.spotify.com/v1/search?q=${song.track_name}+artist:${song.artist_name.split('feat.')[0]}&type=track`
+                var spotifyUrl = `https://api.spotify.com/v1/search?q=${song.track_name}+artist:${song.artist_name.split('feat.')[0]}&type=track&include_external:audio`
 
                 spotifyApiArray.push(spotifyUrl);
 
@@ -42,9 +42,8 @@ function musixApiCall(url) {
 
 function spotifyApiCall(songs) {
 
+    var encodedString = btoa(client_id + ':' + client_secret);
     var songDataArray = [];
-
-    var encodedString = btoa(client_id + ':' + client_secret)
 
     var url = 'https://accounts.spotify.com/api/token'
 
@@ -63,7 +62,8 @@ function spotifyApiCall(songs) {
         })
         .then(function (data) {
             var token = 'Bearer ' + data.access_token
-            for (let i = 0; i < songs.length; i++) {
+
+            for (let i = 7; i < songs.length; i++) {
                 var songFetchOptions = {
                     method: 'GET',
                     headers: {
@@ -76,20 +76,21 @@ function spotifyApiCall(songs) {
                         return response.json();
                     })
                     .then(function (data) {
-                        
+                        // console.log(data)
                         var topMatch = data.tracks.items[0];
                         // console.log(topMatch)
                         var spotifySongData = {
                             song: topMatch.name,
                             album: topMatch.album.name,
+                            albumArt: topMatch.album.images[0],
                             artist: topMatch.artists[0].name,
                             url: topMatch.external_urls.spotify,
-                            preview: topMatch.preview_url
+                            preview: topMatch.preview_url,
                         };
                         songDataArray.push(spotifySongData);
                     })
             }
-            // console.log(songDataArray)
+            console.log(songDataArray)
 
         })
 }
