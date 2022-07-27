@@ -37,20 +37,21 @@ function musixApiCall(url) {
 
             };
             console.log(songArray);
-            return data;
+            spotifyApiCall(songArray);
+            
+            // Delete the following line if your spotifyApiCall function works properly
+            // return data;
         });
 
-    async function processData() {
-
-    };
-    processData();
 }
 
 
 function spotifyApiCall(song) {
-    const spotifySong = fetch(url)
-        .then((response) => response.json())
-        .then()
+    console.log(songArray)
+
+    // const spotifySong = fetch(url)
+    //     .then((response) => response.json())
+    //     .then()
 
 }
 
