@@ -5,18 +5,60 @@ color: whitesmoke
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    font-size: 13pt;
     font-weight: 600;
     text-transform: uppercase;
     color: whitesmoke;
-    cursor: default;
+    display: flex;
+    justify-content: center;
 }
 
 p {
     font-family: 'Open Sans', sans-serif;
-    font-size: 13pt;
+    font-size: 17px;
     font-weight: 600;
     text-transform: uppercase;
     color: whitesmoke;
-    cursor: default;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: red;
+    border-color: red;
+}
+
+img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.searchBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.raindrop1 {
+    width: 600%;
+    height: 150px;
+    background: url(assets/musical-raindrop-1.png) no-repeat 3% 5%;
+    background-size: contain;
+    
+}
+
+.raindrop2 {
+    width: 1600%;
+    height: 150px;
+    background: url(assets/musical-raindrop-2.png) no-repeat 3% 5%;
+    background-size: contain;
+}
+
+.raindrop3 {
+    width: 2400%;
+    height: 150px;
+    background: url(assets/musical-raindrop-3.png) no-repeat 3% 5%;
+    background-size: contain;
 }
