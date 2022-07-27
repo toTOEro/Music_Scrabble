@@ -3,7 +3,12 @@ var apiKEY = "740dcd30745d6e3536b315d57ead722b"
 
 var lyrics = "if,i,were,a,boy"
 
-var musixUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${lyrics}&page_size=10&page=1&s_track_rating=desc&apikey=${apiKEY}`;
+// var musixUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${lyrics}&page_size=10&page=1&s_track_rating=desc&apikey=${apiKEY}`;
+
+var musixUrl = `https://cors-anywhere-vercel-chi.vercel.app/api/cors?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${lyrics}&page_size=10&page=1&s_track_rating=desc&apikey=${apiKEY}`
+
+// var musixUrl = "https://cors-anywhere-vercel-chi.vercel.app/api/cors?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=if,i,were,a,boy&page_size=10&page=1&s_track_rating=desc&apikey=740dcd30745d6e3536b315d57ead722b"
+
 
 var tracks = {};
 var songArray = [];
