@@ -12,7 +12,9 @@ var music = [];
 
 
 function musixApiCall(url) {
-    const mus = fetch(url)
+    const mus = fetch(url, {
+        mode: 'no-cors',
+    })
         .then(function (response) {
             return response.json();
         })
@@ -37,7 +39,7 @@ function musixApiCall(url) {
             };
             console.log(songArray);
             spotifyApiCall(songArray);
-            
+
             // Delete the following line if your spotifyApiCall function works properly
             // return data;
         });
@@ -47,13 +49,13 @@ function musixApiCall(url) {
 function spotifyApiCall(song) {
     console.log(songArray)
 
-    
-// For loop to iterate over the songArray
 
-// Pull song URLs
+    // For loop to iterate over the songArray
 
-// populate an array of objects with title + album + artist URL
-// -> renderSongs()
+    // Pull song URLs
+
+    // populate an array of objects with title + album + artist URL
+    // -> renderSongs()
 
     // const spotifySong = fetch(url)
     //     .then((response) => response.json())
