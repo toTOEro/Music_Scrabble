@@ -3,17 +3,14 @@ var apiKEY = "740dcd30745d6e3536b315d57ead722b"
 
 var lyrics = "if,i,were,a,boy"
 
-// var musixUrl = `https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${lyrics}&page_size=10&page=1&s_track_rating=desc&apikey=${apiKEY}`;
 
 var musixUrl = `https://cors-anywhere-vercel-chi.vercel.app/api/cors?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${lyrics}&page_size=10&page=1&s_track_rating=desc&apikey=${apiKEY}`
 
-// var musixUrl = "https://cors-anywhere-vercel-chi.vercel.app/api/cors?url=https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=if,i,were,a,boy&page_size=10&page=1&s_track_rating=desc&apikey=740dcd30745d6e3536b315d57ead722b"
-
 
 var tracks = {};
-var songArray = [];
-var music = [];
+var spotifyApiArray = [];
 
+var music = [];
 
 
 function musixApiCall(url) {
@@ -28,44 +25,87 @@ function musixApiCall(url) {
                 throw new Error('Network response not OK');
             };
             music = data.message.body.track_list;
-            console.log(music)
             for (let i = 0; i < music.length; i++) {
                 var song = music[i].track;
+                var spotifyUrl = `https://api.spotify.com/v1/search?q=${song.track_name}+artist:${song.artist_name.split('feat.')[0]}&type=track`
 
-                const track = {
-                    album: song.album_name,
-                    artist: song.artist_name,
-                    song: song.track_name,
-                };
+                spotifyApiArray.push(spotifyUrl);
 
-                songArray.push(track);
 
             };
-            console.log(songArray);
-            spotifyApiCall(songArray);
 
-            // Delete the following line if your spotifyApiCall function works properly
-            // return data;
+            spotifyApiCall(spotifyApiArray);
+
         });
 };
 
 
-function spotifyApiCall(song) {
-    console.log(song)
+function spotifyApiCall(songs) {
 
+    var songDataArray = [];
 
-    // For loop to iterate over the songArray
+    var encodedString = btoa(client_id + ':' + client_secret)
 
-    // Pull song URLs
+    var url = 'https://accounts.spotify.com/api/token'
 
-    // populate an array of objects with title + album + artist URL
-    // -> renderSongs()
+    var fetchOptions = {
+        method: 'POST',
+        body: 'grant_type=client_credentials',
+        headers: {
+            'Authorization': 'Basic ' + encodedString,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    }
 
-    // const spotifySong = fetch(url)
-    //     .then((response) => response.json())
-    //     .then()
+    var tokenFetch = fetch(url, fetchOptions)
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(function (data) {
+            var token = 'Bearer ' + data.access_token
+            for (let i = 0; i < songs.length; i++) {
+                var songFetchOptions = {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': token,
+                    },
+                };
 
+                const spotifyMusic = fetch(songs[i], songFetchOptions)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        
+                        var topMatch = data.tracks.items[0];
+                        // console.log(topMatch)
+                        var spotifySongData = {
+                            song: topMatch.name,
+                            album: topMatch.album.name,
+                            artist: topMatch.artists[0].name,
+                            url: topMatch.external_urls.spotify,
+                            preview: topMatch.preview_url
+                        };
+                        songDataArray.push(spotifySongData);
+                    })
+            }
+            // console.log(songDataArray)
+
+        })
 }
+
+// For loop to iterate over the songArray
+
+// Pull song URLs
+
+// populate an array of objects with title + album + artist URL
+// -> renderSongs()
+
+// const spotifySong = fetch(url)
+//     .then((response) => response.json())
+//     .then()
+
+
 
 
 

@@ -1,45 +1,33 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Client Credentials oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#client_credentials_flow
- */
 
- var request = require('request'); // "Request" library
+// var client_id = "e9b231023ef4412d9b11150e6f14f96b";
 
- var client_id = 'CLIENT_ID'; // Your client id
- var client_secret = 'CLIENT_SECRET'; // Your secret
- 
- // your application requests authorization
- var authOptions = {
-   url: 'https://accounts.spotify.com/api/token',
-   headers: {
-     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-   },
-   form: {
-     grant_type: 'client_credentials'
-   },
-   json: true
- };
- 
- request.post(authOptions, function(error, response, body) {
-   if (!error && response.statusCode === 200) {
- 
-     // use the access token to access the Spotify Web API
-     var token = body.access_token;
-     var options = {
-       url: 'https://api.spotify.com/v1/users/jmperezperez',
-       headers: {
-         'Authorization': 'Bearer ' + token
-       },
-       json: true
-     };
-     request.get(options, function(error, response, body) {
-       console.log(body);
-     });
-   }
- });
+// var client_secret = '249263bfaf414e1eaf1f3d355ab2fff1';
 
- 
+// var encodedString = btoa(client_id+':'+client_secret)
+
+// var url = 'https://accounts.spotify.com/api/token'
+// var fetchHeaders = new Headers({
+//     // 'Authorization': 'Basic ' + (client_id + ':' + client_secret),
+//     'Authorization': 'Basic ' + encodedString,
+//     });
+
+
+
+// var fetchOptions = {
+//     method: 'POST',
+//     body: 'grant_type=client_credentials',
+//     headers: {
+//         'Authorization': 'Basic ' + encodedString,
+//         'Content-Type': 'application/x-www-form-urlencoded',
+//     }
+
+// }
+
+// var testFetch = fetch(url,fetchOptions).then(function (resp) {
+//     return resp.json()
+//     })
+//     .then (function (data){
+//         var token = 'Bearer ' + data.access_token
+//     })
+
+
