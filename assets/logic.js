@@ -34,7 +34,6 @@ function musixApiCall(url) {
 
                 songArray.push(track);
 
-
             };
             console.log(songArray);
             spotifyApiCall(songArray);
@@ -42,12 +41,19 @@ function musixApiCall(url) {
             // Delete the following line if your spotifyApiCall function works properly
             // return data;
         });
-
-}
+};
 
 
 function spotifyApiCall(song) {
     console.log(songArray)
+
+    
+// For loop to iterate over the songArray
+
+// Pull song URLs
+
+// populate an array of objects with title + album + artist URL
+// -> renderSongs()
 
     // const spotifySong = fetch(url)
     //     .then((response) => response.json())
