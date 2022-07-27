@@ -1,0 +1,36 @@
+body {
+background-color: black;
+color: whitesmoke
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: red;
+    border-color: red;
+}
+
+.searchBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
