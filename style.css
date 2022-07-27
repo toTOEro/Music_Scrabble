@@ -27,6 +27,13 @@ button {
     border-color: red;
 }
 
+img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .searchBox {
     position: relative;
     display: flex;
