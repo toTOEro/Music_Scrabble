@@ -12,10 +12,9 @@ var music = [];
 
 
 function musixApiCall(url) {
-    const mus = fetch(url, {
-        mode: 'no-cors',
-    })
+    const mus = fetch(url)
         .then(function (response) {
+            console.log(response)
             return response.json();
         })
         .then(function (data) {
@@ -47,7 +46,7 @@ function musixApiCall(url) {
 
 
 function spotifyApiCall(song) {
-    console.log(songArray)
+    console.log(song)
 
 
     // For loop to iterate over the songArray
