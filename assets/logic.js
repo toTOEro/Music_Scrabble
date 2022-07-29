@@ -1,4 +1,3 @@
-
 var apiKEY = "740dcd30745d6e3536b315d57ead722b"
 
 var lyrics = "if,i,were,a,boy"
@@ -116,4 +115,3 @@ musixApiCall(musixUrl)
 
 
 // Logic to determine song from words
-
