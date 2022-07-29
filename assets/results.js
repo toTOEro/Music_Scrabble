@@ -1,17 +1,9 @@
+
+// Pulls stored spotify info 
 var spotifyInfo = JSON.parse(window.localStorage.getItem("spotifyInformation"));
 var results = document.getElementById('results').children[0];
 
-console.log(spotifyInfo)
-
-// console.log(spotifyInfo)
-
-// console.log({ results })
-
-// Remove this later
-while (results.children.length != 1) {
-    results.removeChild(results.lastChild);
-}
-
+// Renders top 5 results on page
 function renderResults() {
 
     for (let i = 0; i < 5; i++) {
@@ -35,11 +27,3 @@ function renderResults() {
 }
 
 renderResults()
-
-for (let i = 0; i < results.children.length; i++) {
-    var test = results.children[i]
-    // console.log(`Children[${i}]`)
-    // console.log(test)
-
-}
-

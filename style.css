@@ -1,6 +1,6 @@
 body {
-background-color: black;
-color: whitesmoke
+    background-color: black;
+    color: whitesmoke
 }
 
 h1 {
@@ -30,12 +30,12 @@ button {
 
 img {
     display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
-th,td {
+th, td {
     font-family: 'Open Sans', sans-serif;
     padding: 5px;
     text-align: left;
@@ -45,6 +45,18 @@ td:hover {
     background-color: red;
 }
 
+td {
+    background-color: rgba(72, 209, 229, 255);
+    color: black;
+
+}
+
+td, a {
+    text-decoration: none;
+
+}
+
+
 th {
     background-color: grey;
     color: black;
@@ -52,31 +64,35 @@ th {
     height: 30px;
 }
 
+
 .searchBox {
     position: relative;
     display: flex;
     justify-content: center;
     overflow: hidden;
-    padding:5px;
+    padding: 5px;
 }
 
 .raindrop1 {
-    width: 600%;
+    position: relative;
+    left: 18vw;
     height: 125px;
     background: url(assets/musical-raindrop-1.png) no-repeat 3% 5%;
     background-size: contain;
-    
+
 }
 
 .raindrop2 {
-    width: 1600%;
+    position: relative;
+    left: 45vw;
     height: 125px;
     background: url(assets/musical-raindrop-2.png) no-repeat 3% 5%;
     background-size: contain;
 }
 
 .raindrop3 {
-    width: 2400%;
+    position: relative;
+    left: 73vw;
     height: 125px;
     background: url(assets/musical-raindrop-3.png) no-repeat 3% 5%;
     background-size: contain;
@@ -96,4 +112,23 @@ th {
     overflow: hidden; */
     margin-left: auto;
     margin-right: auto;
+}
+
+#submitToAPI {
+    display: none;
+}
+
+#wordCloud {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+#wordsOnCloud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
 }

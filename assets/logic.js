@@ -1,8 +1,11 @@
-
+// Pull HTML elements
 var lyricsEl = document.getElementById('lyrics');
 var submitBt = document.getElementById('submitBt');
 var lyricEntryEl = document.getElementById('lyricsEntry');
 var searchFormEl = document.getElementById('searchForm');
+var submitToAPIEl = document.getElementById('submitToAPI');
+var wordCloudEl = document.getElementById('wordsOnCloud');
+
 
 var wordSubmitStatus = document.createElement('ion-icon');
 
@@ -10,6 +13,7 @@ var wordSubmitStatus = document.createElement('ion-icon');
 window.localStorage.setItem("spotifyInformation", null);
 
 
+// Initialize variables used within code
 var apiKEY = "740dcd30745d6e3536b315d57ead722b";
 var lyrics = []
 var tracks = {};
@@ -26,11 +30,9 @@ function musixApiCall() {
 
     const mus = fetch(musixUrl)
         .then(function (response) {
-            console.log(response);
             return response.json();
         })
         .then(function (data) {
-            console.log(data.message.header.status_code)
             if (data.message.header.status_code != 200) {
                 throw new Error('Network response not OK');
             };
@@ -88,8 +90,8 @@ function spotifyApiCall(songs) {
                         return response.json();
                     })
                     .then(function (data) {
-                        console.log(data)
                         var topMatch = data.tracks.items[0];
+                        console.log(data.tracks)
                         // If statement to handle situations where there is no song result
                         if (data.tracks.total == 0) {
                             i++
@@ -118,30 +120,30 @@ function logWord(event) {
     if (onlyCharacters(enteredWord)) {
         // Pushes the entered word (if it's valid) to the lyrics matrix and indicates successful entry
         lyrics.push(enteredWord);
-        wordSubmitStatus.setAttribute('style','color:green; font-size:22px; z-index: 100;');
-        wordSubmitStatus.setAttribute('name','checkmark-circle-outline');
+        wordSubmitStatus.setAttribute('style', 'color:green; font-size:22px; z-index: 100;');
+        wordSubmitStatus.setAttribute('name', 'checkmark-circle-outline');
         searchFormEl.appendChild(wordSubmitStatus);
-        console.log(searchFormEl)
         setTimeout(() => {
             searchFormEl.removeChild(searchFormEl.lastChild)
         }, 1500);
-        lyricsEl.value = ""
+        lyricsEl.value = "";
+        submitToAPIEl.setAttribute('style','display: flex')
 
     } else {
         // Indicates successful entry
-        console.log(lyricsEl)
-        wordSubmitStatus.setAttribute('style','color:red; font-size:22px;');
-        wordSubmitStatus.setAttribute('name','alert-circle-outline');
+        wordSubmitStatus.setAttribute('style', 'color:red; font-size:22px;');
+        wordSubmitStatus.setAttribute('name', 'alert-circle-outline');
         searchFormEl.appendChild(wordSubmitStatus);
         setTimeout(() => {
-            searchFormEl.removeChild(searchFormEl.lastChild)
+            searchFormEl.removeChild(searchFormEl.lastChild);
         }, 1500);
-        lyricsEl.value = ""
-
+        lyricsEl.value = "";
     };
-    console.log(enteredWord)
-    console.log(lyrics)
+    wordCloudEl.textContent = lyrics.join('☁️ ☁️ ☁️').toUpperCase();
+
+
 };
+
 
 // onlyCharacters function to verify only characters were added.
 // https://bobbyhadz.com/blog/javascript-check-if-string-contains-only-letters#:~:text=Use%20the%20test()%20method,only%20letters%20and%20false%20otherwise.
@@ -152,10 +154,9 @@ function onlyCharacters(entry) {
 function renderResults(songInformation) {
     window.localStorage.setItem("spotifyInformation", JSON.stringify(songInformation));
     window.location.href = "./results.html";
+};
 
-}
 
-
-lyricEntryEl.addEventListener("click", logWord)
-submitBt.addEventListener('click', musixApiCall)
+lyricEntryEl.addEventListener("click", logWord);
+submitBt.addEventListener('click', musixApiCall);
 
