@@ -2,15 +2,21 @@
 var lyricsEl = document.getElementById('lyrics');
 var submitBt = document.getElementById('submitBt');
 var lyricEntryEl = document.getElementById('lyricsEntry');
+var searchFormEl = document.getElementById('searchForm');
+
+var wordSubmitStatus = document.createElement('ion-icon');
+
+// Clearing out localStorage to prevent unwanted songs from displaying in next page
+window.localStorage.setItem("spotifyInformation", null);
+
 
 var apiKEY = "740dcd30745d6e3536b315d57ead722b";
-
 var lyrics = []
-
 var tracks = {};
 var spotifyApiArray = [];
-
 var music = [];
+
+
 
 // musixApiCall sends a request to the musixAPi to match the entered words to the lyrics of songs. It returns the top 10
 // songs as a result
@@ -110,11 +116,30 @@ function logWord(event) {
     var enteredWord = lyricsEl.value;
 
     if (onlyCharacters(enteredWord)) {
+        // Pushes the entered word (if it's valid) to the lyrics matrix and indicates successful entry
         lyrics.push(enteredWord);
-        enteredWord = "";
+        wordSubmitStatus.setAttribute('style','color:green; font-size:22px; z-index: 100;');
+        wordSubmitStatus.setAttribute('name','checkmark-circle-outline');
+        searchFormEl.appendChild(wordSubmitStatus);
+        console.log(searchFormEl)
+        setTimeout(() => {
+            searchFormEl.removeChild(searchFormEl.lastChild)
+        }, 1500);
+        lyricsEl.value = ""
+
     } else {
-        enteredWord = "";
+        // Indicates successful entry
+        console.log(lyricsEl)
+        wordSubmitStatus.setAttribute('style','color:red; font-size:22px;');
+        wordSubmitStatus.setAttribute('name','alert-circle-outline');
+        searchFormEl.appendChild(wordSubmitStatus);
+        setTimeout(() => {
+            searchFormEl.removeChild(searchFormEl.lastChild)
+        }, 1500);
+        lyricsEl.value = ""
+
     };
+    console.log(enteredWord)
     console.log(lyrics)
 };
 

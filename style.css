@@ -82,10 +82,6 @@ th {
     background-size: contain;
 }
 
-#wordCloud {
-    height: 400px;
-}
-
 .button {
     position: relative;
     display: flex;
