@@ -40,11 +40,12 @@ img {
     display: flex;
     justify-content: center;
     overflow: hidden;
+    padding:5px;
 }
 
 .raindrop1 {
     width: 600%;
-    height: 150px;
+    height: 125px;
     background: url(assets/musical-raindrop-1.png) no-repeat 3% 5%;
     background-size: contain;
     
@@ -52,14 +53,19 @@ img {
 
 .raindrop2 {
     width: 1600%;
-    height: 150px;
+    height: 125px;
     background: url(assets/musical-raindrop-2.png) no-repeat 3% 5%;
     background-size: contain;
 }
 
 .raindrop3 {
     width: 2400%;
-    height: 150px;
+    height: 125px;
     background: url(assets/musical-raindrop-3.png) no-repeat 3% 5%;
     background-size: contain;
+}
+
+#wordCloud {
+    height: 400px;
+
 }
