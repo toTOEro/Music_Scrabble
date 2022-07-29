@@ -15,7 +15,7 @@ h1 {
 
 p {
     font-family: 'Open Sans', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
     color: whitesmoke;
@@ -33,6 +33,23 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+th,td {
+    font-family: 'Open Sans', sans-serif;
+    padding: 5px;
+    text-align: left;
+}
+
+td:hover {
+    background-color: red;
+}
+
+th {
+    background-color: grey;
+    color: black;
+    width: 370px;
+    height: 30px;
 }
 
 .searchBox {
@@ -67,5 +84,20 @@ img {
 
 #wordCloud {
     height: 400px;
+}
 
+.button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.table {
+    /* position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; */
+    margin-left: auto;
+    margin-right: auto;
 }
