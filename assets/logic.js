@@ -1,8 +1,7 @@
 
 var lyricsEl = document.getElementById('lyrics');
 var submitBt = document.getElementById('submitBt');
-var lyricEntryEl = document.getElementById('submitBt');
-var searchBt = document.getElementById('searchBt');
+var lyricEntryEl = document.getElementById('lyricsEntry');
 
 var apiKEY = "740dcd30745d6e3536b315d57ead722b";
 
@@ -133,5 +132,5 @@ function renderResults(songInformation) {
 
 
 lyricEntryEl.addEventListener("click", logWord)
-searchBt.addEventListener('click', musixApiCall)
+submitBt.addEventListener('click', musixApiCall)
 
