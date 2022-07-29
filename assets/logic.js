@@ -16,7 +16,7 @@ var music = [];
 function musixApiCall(url) {
     const mus = fetch(url)
         .then(function (response) {
-            console.log(response)
+            console.log(response);
             return response.json();
         })
         .then(function (data) {
@@ -42,6 +42,8 @@ function musixApiCall(url) {
 
 function spotifyApiCall(songs) {
 
+    var client_id = "e9b231023ef4412d9b11150e6f14f96b";
+    var client_secret = '249263bfaf414e1eaf1f3d355ab2fff1';
     var encodedString = btoa(client_id + ':' + client_secret);
     var songDataArray = [];
 
@@ -63,7 +65,7 @@ function spotifyApiCall(songs) {
         .then(function (data) {
             var token = 'Bearer ' + data.access_token
 
-            for (let i = 7; i < songs.length; i++) {
+            for (let i = 0; i < songs.length; i++) {
                 var songFetchOptions = {
                     method: 'GET',
                     headers: {
@@ -76,9 +78,7 @@ function spotifyApiCall(songs) {
                         return response.json();
                     })
                     .then(function (data) {
-                        // console.log(data)
                         var topMatch = data.tracks.items[0];
-                        // console.log(topMatch)
                         var spotifySongData = {
                             song: topMatch.name,
                             album: topMatch.album.name,
@@ -88,12 +88,12 @@ function spotifyApiCall(songs) {
                             preview: topMatch.preview_url,
                         };
                         songDataArray.push(spotifySongData);
-                    })
-            }
+                    });
+            };
             console.log(songDataArray)
 
-        })
-}
+        });
+};
 
 // For loop to iterate over the songArray
 
