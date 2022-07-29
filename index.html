@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +9,26 @@
     <title>Music Scrabble</title>
     <div id="wordCloud"><img src="assets\musical-cloud-.png" alt="Clouds"></div>
 </head>
+
 <body>
     <main>
         <h1>Music Scrabble</h1>
         <p>*An application that helps you find new and old music based on your key words</p>
     </main>
 
-    <div class="searchBox">
-        <input type="text" placeholder="Search..">
-        <button type="submit" class="icon">
+
+    <form id="" class="searchBox">
+        <input id="lyrics" type="text" placeholder="Search..">
+        <button id="lyricsEntry" type="submit" class="icon">
             <span class="button__icon">
                 <ion-icon name="search-outline"></ion-icon>
             </span>
         </button>
-    </div>
+    </form>
 
+    <div class="searchBox">
+        <button id="submitBt" type="submit">Submit</button>
+    </div>
 
 
     <div class="raindrop3"></div>
@@ -30,7 +36,7 @@
     <div class="raindrop2"></div>
 
 
-    
+
 
 
 
@@ -41,4 +47,5 @@
 </body>
 
 <script src="./assets/logic.js"></script>
+
 </html>
