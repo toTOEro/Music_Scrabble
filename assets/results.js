@@ -16,7 +16,7 @@ function renderResults() {
         albumCell.innerHTML = `<img src='${spotifyInfo[i].albumArt.url}'>`;
         
         console.log(spotifyInfo[i].albumArt.url)
-        trackCell.innerHTML = `<a href=${spotifyInfo[i].url}>${spotifyInfo[i].song}</a>`;
+        trackCell.innerHTML = `<a href=${spotifyInfo[i].url} target="_blank">${spotifyInfo[i].song}</a>`;
         newRow.append(artistCell,albumCell,trackCell);
         
         results.appendChild(newRow)
