@@ -1,6 +1,6 @@
 # Music Scrabble
 
-This project can be found at the following link: https://totoero.github.io/Dynaguys/index.html
+This project can be found at the following link: https://totoero.github.io/Music_Scrabble/
 
 Music Scrabble is a website that is developed for music listeners and music writers to find songs that with lyrics that match the words that they specify. By entering words and hitting the submit button, users are presented with a results page showing up to 5 songs that match their query.
 
