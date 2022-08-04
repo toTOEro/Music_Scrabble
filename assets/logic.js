@@ -55,7 +55,7 @@ function musixApiCall() {
 function spotifyApiCall(songs) {
 
     var client_id = "e9b231023ef4412d9b11150e6f14f96b";
-    var client_secret = '249263bfaf414e1eaf1f3d355ab2fff1';
+    var client_secret = '32c48b63a40e48c282177d8086894633';
     var encodedString = btoa(client_id + ':' + client_secret);
     var songDataArray = [];
 
